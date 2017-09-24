@@ -1,10 +1,10 @@
 package com.hellokoding.core.datastructure;
 
-public class DisjoinSet {
+public class DisjoinSetUnionByBiggestIndex {
     int[] parents;
     int N;
 
-    DisjoinSet(int N) {
+    DisjoinSetUnionByBiggestIndex(int N) {
         this.N = N;
         parents = new int[N];
         initDisjoinSet();
@@ -32,13 +32,13 @@ public class DisjoinSet {
             return;
         }
 
-        parents[rootOfY] = rootOfX;
+        parents[rootOfX] = rootOfY;
     }
 
 
     public static void main(String[] args) {
         int N = 4;
-        DisjoinSet disjoinSet = new DisjoinSet(N);
+        DisjoinSetUnionByBiggestIndex disjoinSet = new DisjoinSetUnionByBiggestIndex(N);
         disjoinSet.union(0, 1);
         disjoinSet.union(1, 2);
 

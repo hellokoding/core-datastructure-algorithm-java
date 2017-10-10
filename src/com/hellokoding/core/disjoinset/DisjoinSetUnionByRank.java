@@ -1,12 +1,13 @@
-package com.hellokoding.core.datastructure;
+package com.hellokoding.core.disjoinset;
 
-public class DisjoinSetUnionByBiggestIndex {
-    int[] parents;
+public class DisjoinSetUnionByRank {
+    int[] parents, ranks;
     int N;
 
-    DisjoinSetUnionByBiggestIndex(int N) {
+    DisjoinSetUnionByRank(int N) {
         this.N = N;
         parents = new int[N];
+        ranks = new int[N];
         initDisjoinSet();
     }
 
@@ -32,13 +33,20 @@ public class DisjoinSetUnionByBiggestIndex {
             return;
         }
 
-        parents[rootOfX] = rootOfY;
+        if (ranks[rootOfX] < ranks[rootOfY]) {
+            parents[rootOfX] = rootOfY;
+        } else if (ranks[rootOfX] > ranks[rootOfY]) {
+            parents[rootOfY] = rootOfX;
+        } else {
+            parents[rootOfX] = rootOfY;
+            ranks[rootOfY] = ranks[rootOfY] + 1;
+        }
     }
 
 
     public static void main(String[] args) {
         int N = 4;
-        DisjoinSetUnionByBiggestIndex disjoinSet = new DisjoinSetUnionByBiggestIndex(N);
+        DisjoinSetUnionByRank disjoinSet = new DisjoinSetUnionByRank(N);
         disjoinSet.union(0, 1);
         disjoinSet.union(1, 2);
 

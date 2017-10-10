@@ -1,6 +1,6 @@
-package com.hellokoding.core.dynamic;
+package com.hellokoding.core.dynamic.LIS;
 
-public class LongestIncreasingSubsequenceNLogN
+public class FindLISNlogN
 {
     static int CeilIndex(int A[], int l, int r, int key)
     {

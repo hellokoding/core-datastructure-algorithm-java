@@ -1,4 +1,4 @@
-package com.hellokoding.core.dynamic;
+package com.hellokoding.core.dynamic.LIS;
 
 import java.util.Arrays;
 

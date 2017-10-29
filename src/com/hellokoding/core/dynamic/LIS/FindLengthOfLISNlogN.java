@@ -1,8 +1,8 @@
 package com.hellokoding.core.dynamic.LIS;
 
-public class FindLISNlogN
+public class FindLengthOfLISNlogN
 {
-    static int CeilIndex(int A[], int l, int r, int key)
+    static int findIndex(int A[], int l, int r, int key)
     {
         while (r - l > 1)
         {
@@ -16,7 +16,7 @@ public class FindLISNlogN
         return r;
     }
 
-    static int LongestIncreasingSubsequenceLength(int A[], int size)
+    static int findLengthOfLIS(int A[], int size)
     {
         int[] tailTable   = new int[size];
         int len;
@@ -32,7 +32,7 @@ public class FindLISNlogN
                 tailTable[len++] = A[i];
 
             else
-                tailTable[CeilIndex(tailTable, -1, len-1, A[i])] = A[i];
+                tailTable[findIndex(tailTable, -1, len-1, A[i])] = A[i];
         }
 
         return len;
@@ -40,9 +40,8 @@ public class FindLISNlogN
 
     public static void main(String[] args)
     {
-        int A[] = { 0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15 };
+        int A[] = {3, 2, 6, 4, 5, 1};
         int n = A.length;
-        System.out.println("Length of Longest Increasing Subsequence is "+
-                LongestIncreasingSubsequenceLength(A, n));
+        System.out.println("Length of LIS: " + findLengthOfLIS(A, n));
     }
 }
